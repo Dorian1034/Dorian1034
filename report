@@ -1,0 +1,61 @@
+panic(cpu 0 caller 0xffffff80019c5396): Kernel trap at 0xffffff8006702904, type 14=page fault, registers:
+CR0: 0x000000008001003b, CR2: 0x0000000000000000, CR3: 0x00000000196f9000, CR4: 0x00000000003626e0
+RAX: 0xffffff8006706120, RBX: 0xffffff93591604a0, RCX: 0x0000000000000001, RDX: 0x0000000000000000
+RSP: 0xffffffb091213d50, RBP: 0xffffffb091213d50, RSI: 0x0000000000000002, RDI: 0x0000000000000000
+R8:  0x0000000000000008, R9:  0x0000000000000010, R10: 0xffffff80020f0bf0, R11: 0x0000000000000000
+R12: 0x00000000ceb46500, R13: 0x0000000000004dc1, R14: 0x0000000000000002, R15: 0xffffff93591604a0
+RFL: 0x0000000000010202, RIP: 0xffffff8006702904, CS:  0x0000000000000008, SS:  0x0000000000000010
+Fault CR2: 0x0000000000000000, Error code: 0x0000000000000000, Fault CPU: 0x0, PL: 0, VF: 1
+
+Backtrace (CPU 0), Frame : Return Address
+0xffffffb091213770 : 0xffffff800188d25d mach_kernel : _handle_debugger_trap + 0x3fd
+0xffffffb0912137c0 : 0xffffff80019d49d3 mach_kernel : _kdp_i386_trap + 0x143
+0xffffffb091213800 : 0xffffff80019c4fca mach_kernel : _kernel_trap + 0x55a
+0xffffffb091213850 : 0xffffff8001831a2f mach_kernel : _return_from_trap + 0xff
+0xffffffb091213870 : 0xffffff800188ca7d mach_kernel : _DebuggerTrapWithState + 0xad
+0xffffffb091213990 : 0xffffff800188cd73 mach_kernel : _panic_trap_to_debugger + 0x273
+0xffffffb091213a00 : 0xffffff800209d8fa mach_kernel : _panic + 0x54
+0xffffffb091213a70 : 0xffffff80019c5396 mach_kernel : _sync_iss_to_iks + 0x2c6
+0xffffffb091213bf0 : 0xffffff80019c507d mach_kernel : _kernel_trap + 0x60d
+0xffffffb091213c40 : 0xffffff8001831a2f mach_kernel : _return_from_trap + 0xff
+0xffffffb091213c60 : 0xffffff8006702904 as.acidanthera.voodoo.driver.PS2Controller : __ZN18ApplePS2Controller24_dispatchDriverInterruptEmh + 0x2c
+0xffffffb091213d50 : 0xffffff8006702932 as.acidanthera.voodoo.driver.PS2Controller : __ZN18ApplePS2Controller23dispatchDriverInterruptEmh + 0x16
+0xffffffb091213d70 : 0xffffff8006702e5d as.acidanthera.voodoo.driver.PS2Controller : __ZN18ApplePS2Controller12readDataPortEm + 0x73
+0xffffffb091213db0 : 0xffffff800670424e as.acidanthera.voodoo.driver.PS2Controller : __ZN18ApplePS2Controller15resetControllerEv + 0x1ae
+0xffffffb091213de0 : 0xffffff8006702f5b as.acidanthera.voodoo.driver.PS2Controller : __ZN18ApplePS2Controller18setPowerStateGatedEj + 0x55
+0xffffffb091213e10 : 0xffffff8006704531 as.acidanthera.voodoo.driver.PS2Controller : __ZN18ApplePS2Controller19setPowerStateActionEP8OSObjectPvS2_S2_S2_ + 0xd
+0xffffffb091213e20 : 0xffffff8001fed94e mach_kernel : __ZN10IOWorkLoop9runActionEPFiP8OSObjectPvS2_S2_S2_ES1_S2_S2_S2_S2_ + 0x3e
+0xffffffb091213e60 : 0xffffff8006704409 as.acidanthera.voodoo.driver.PS2Controller : __ZN18ApplePS2Controller20setPowerStateCalloutEPvS0_ + 0x39
+0xffffffb091213e80 : 0xffffff80018d3975 mach_kernel : _thread_call_delayed_timer + 0x4a5
+0xffffffb091213ef0 : 0xffffff80018d48e4 mach_kernel : _thread_call_delayed_timer + 0x1414
+0xffffffb091213fa0 : 0xffffff800183113e mach_kernel : _call_continuation + 0x2e
+      Kernel Extensions in backtrace:
+         as.acidanthera.voodoo.driver.PS2Controller(2.2.6)[9B5C669A-FED5-39CE-A1CF-3103AECE7E5B]@0xffffff8006701000->0xffffff8006718fff
+            dependency: com.apple.iokit.IOACPIFamily(1.4)[E94DD784-3AA2-3D01-A32F-77D3620F4FD7]@0xffffff8003e44000->0xffffff8003e45fff
+
+Process name corresponding to current thread: kernel_task
+Boot args: keepsyms=1 debug=0x100 alcid=28 swd_panic=1 -igfxblr igfxonln=1-noDC9
+
+Mac OS version:
+20G224
+
+Kernel version:
+Darwin Kernel Version 20.6.0: Tue Oct 12 18:33:42 PDT 2021; root:xnu-7195.141.8~1/RELEASE_X86_64
+Kernel UUID: ABC69550-60C2-34FE-B307-C24A8C39309C
+KernelCache slide: 0x0000000001600000
+KernelCache base:  0xffffff8001800000
+Kernel slide:      0x0000000001610000
+Kernel text base:  0xffffff8001810000
+__HIB  text base: 0xffffff8001700000
+System model name: MacBookPro13,3 (Mac-A5C67F76ED83108C)
+System shutdown begun: NO
+Panic diags file available: YES (0x0)
+Hibernation exit count: 0
+
+System uptime in nanoseconds: 596174095128
+Last Sleep:           absolute           base_tsc          base_nano
+  Uptime  : 0x0000008acebec7d8
+  Sleep   : 0x0000008aad39c6ae 0x0000000563922358 0x0000000000000000
+  Wake    : 0x0000008aaefad4a2 0x000000006c4462ec 0x0000008aadba3bbc
+
+
